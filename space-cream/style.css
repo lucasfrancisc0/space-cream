@@ -1,0 +1,172 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #EFF1FF;
+  --bg-header: #8E9AAF;
+  --bg-title: #CBC0D3;
+  --bg-h2cards: #FEEAFA;
+
+  --fc-p: #23053A;
+  --fc-h2cards: #4A4E69;
+  
+
+  font-size: 62.5%;
+  --fs-header: clamp(2rem, 1rem + 6vw, 4rem);
+  --fs-body: clamp(1rem, 0.5rem + 4vw, 2rem);
+}
+
+body {
+  background: var(--bg-primary);
+}
+
+.page {
+  max-width: 38.4rem;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+header {
+  background: var(--bg-header);
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-size: var(--fs-header);
+  height: 27.9rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  margin-bottom: 1.4rem;
+
+}
+
+header img {
+  max-width: 13.7rem;
+  height: auto;
+}
+
+.tit {
+  background: var(--bg-title);
+  text-align: center;
+  width: 100%;
+}
+
+header h1 {
+  letter-spacing: 0.05em;
+
+  font-size: var(--fs-header);
+  margin: 0.8rem auto;
+}
+
+header h1, .card h2{
+  font-family: 'Staatliches', cursive;
+  line-height: 3.4rem;
+}
+
+main {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 3.2rem;
+}
+
+p {
+  font-family: 'Palanquin', sans-serif;
+
+  max-width: 30.5rem;
+
+  line-height: 1.5rem;
+  font-size: var(--fs-body)
+}
+
+.card {
+  position: relative;
+  max-width: 32rem;
+  margin: 0 auto;
+
+  animation: downtop 700ms 350ms backwards;
+}
+
+.card:hover::before{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: calc(100% + 2rem);
+  height: calc(100% + 2rem);
+  margin: 0 auto;
+
+  background: linear-gradient(45deg, #ffff00, #00ff00, #0099ff, #001aff, #a200ff, #ff0055, #ff0000,
+  #ffff00, #00ff00, #0099ff, #001aff, #a200ff);
+  background-size: 300%;
+
+  animation: animarborda 8s linear infinite;
+}
+
+.card::before {
+  filter: blur(50px);
+}
+
+
+.card img {
+  max-width: 32rem;
+  object-fit: cover;
+}
+
+.card img:hover {
+  transform: scale(1.1);
+}
+
+.card h2 {
+  display: inline-flex;
+  
+  color: var(--fc-h2cards);
+  background-color: var(--bg-h2cards);
+  
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  padding: 0 2.4rem;
+
+  line-height: 3.5rem;
+  font-size: clamp(1rem, 1rem + 6vw, 2rem);
+  letter-spacing: 0.5px;
+  
+  border-radius: 2rem;
+  
+  width: fit-content;
+}
+
+.card:hover h2 {
+  transform: scale(1.1);
+}
+
+
+@keyframes downtop {
+  0% {
+    opacity: 0;
+    transform:translateY(15px);
+  }
+  
+  100% {
+    opacity: 1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes animarborda {
+  0%{
+    background-position: 0;
+  }
+  100%{
+    background-position: 300%;
+  }
+}
